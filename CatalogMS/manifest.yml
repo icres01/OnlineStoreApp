@@ -1,0 +1,13 @@
+---
+applications:
+- services:
+  - myMicroservicesCloudant
+  name: Microservices-CatalogAPI-ck102g-174
+  memory: 256m
+  instances: 1
+  host: Microservices-CatalogAPI-ck102g-174
+  path: .
+declared-services:
+  myMicroservicesCloudant:
+    label: cloudantNoSQLDB
+    plan: Shared

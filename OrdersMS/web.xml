@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>OrdersMS</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- Servlet 3.0 RESTful Application servlet -->
+	<servlet>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+
+    <!-- Reference to persistence context -->	
+	<persistence-context-ref>
+		<persistence-context-ref-name>openjpa-order/entitymanager</persistence-context-ref-name>
+		<persistence-unit-name>openjpa-order</persistence-unit-name>
+	</persistence-context-ref>
+
+    <!-- Reference to database resource -->	
+	<resource-ref>
+		<!-- The cloudAutowiring-1.0 Liberty feature will resolve this to the database service bound to the application. -->
+		<res-ref-name>jdbc/mydbdatasource</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>

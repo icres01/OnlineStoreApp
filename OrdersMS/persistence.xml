@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="openjpa-order">
+	
+		<!-- Define the Datasource. -->
+		<jta-data-source>java:comp/env/jdbc/mydbdatasource</jta-data-source>
+		
+		<!-- Define the persistence classes. -->
+		<class>com.ibm.ws.msdemo.rest.pojo.Order</class>
+		
+		<properties>
+			<!-- Configure JPA to run the mapping tool automatically at runtime. -->
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+			<!-- Configure JPA to generate and run the DDL to create tables. -->
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+		</properties>
+		
+	</persistence-unit>
+</persistence>
